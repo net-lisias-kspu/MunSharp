@@ -102,10 +102,10 @@ namespace MoonSharp.Interpreter.Interop.BasicDescriptors
 				AddMemberTo(m_Members, name, desc);
 		}
 
-		/// <summary>
-		/// Gets the member names.
-		/// </summary>
-		public IEnumerable<string> MemberNames
+        /// <summary>
+        /// Gets the member names.
+        /// </summary>
+        public IEnumerable<string> MemberNames
 		{
 			get { return m_Members.Keys; }
 		}
@@ -171,10 +171,12 @@ namespace MoonSharp.Interpreter.Interop.BasicDescriptors
 			m_MetaMembers.Remove(memberName);
 		}
 
+        public void GetReflectedType(IMemberDescriptor descriptor)
+        {
 
+        }
 
-
-		private void AddMemberTo(Dictionary<string, IMemberDescriptor> members, string name, IMemberDescriptor desc)
+        private void AddMemberTo(Dictionary<string, IMemberDescriptor> members, string name, IMemberDescriptor desc)
 		{
 			IOverloadableMemberDescriptor odesc = desc as IOverloadableMemberDescriptor;
 
