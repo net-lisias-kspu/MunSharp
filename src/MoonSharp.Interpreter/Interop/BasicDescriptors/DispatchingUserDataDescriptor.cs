@@ -187,6 +187,13 @@ namespace MoonSharp.Interpreter.Interop.BasicDescriptors
             return null;
         }
 
+        bool IsDescSubclassOfDesc(IMemberDescriptor desc1,IMemberDescriptor desc2)
+        {
+            Type type1 = GetDeclaringType(desc1);
+            Type type2 = GetDeclaringType(desc2);
+            return type1.IsSubclassOf(type2);
+        }
+
         private void AddMemberTo(Dictionary<string, IMemberDescriptor> members, string name, IMemberDescriptor desc)
 		{
             IOverloadableMemberDescriptor odesc = desc as IOverloadableMemberDescriptor;
@@ -202,9 +209,7 @@ namespace MoonSharp.Interpreter.Interop.BasicDescriptors
 					else
                     {
                         var oldDesc = members[name];
-                        Type newDeclaringType = GetDeclaringType(desc);
-                        Type oldDeclaringType = GetDeclaringType(oldDesc);
-                        if (newDeclaringType.IsSubclassOf(oldDeclaringType))
+                        if (IsDescSubclassOfDesc(desc,oldDesc))
                         {
                             // Just shadow the older version
                             members[name] = new OverloadedMethodMemberDescriptor(name, this.Type, odesc);
@@ -222,10 +227,9 @@ namespace MoonSharp.Interpreter.Interop.BasicDescriptors
 				if (members.ContainsKey(name))
 				{
                     var oldDesc = members[name];
-                    Type newDeclaringType = GetDeclaringType(desc);
-                    Type oldDeclaringType = GetDeclaringType(oldDesc);
-                    if (newDeclaringType.IsSubclassOf(oldDeclaringType))
+                    if (IsDescSubclassOfDesc(desc, oldDesc))
                     {
+                        // Just shadow the older version
                         members[name] = desc;
                     }
 
