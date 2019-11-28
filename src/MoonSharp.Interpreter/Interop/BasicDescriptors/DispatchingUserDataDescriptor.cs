@@ -190,7 +190,16 @@ namespace MoonSharp.Interpreter.Interop.BasicDescriptors
         bool IsDescSubclassOfDesc(IMemberDescriptor desc1,IMemberDescriptor desc2)
         {
             Type type1 = GetDeclaringType(desc1);
+            if (type1 == null)
+            {
+                throw new ArgumentException("Could not find the DeclaringType for member " + desc1);
+            }
             Type type2 = GetDeclaringType(desc2);
+            if (type2 == null)
+            {
+                throw new ArgumentException("Could not find the DeclaringType for member " + desc2);
+            }
+          
             return type1.IsSubclassOf(type2);
         }
 
