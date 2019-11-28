@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace MoonSharp.Interpreter.Interop.BasicDescriptors
 {
 	/// <summary>
@@ -8,10 +10,10 @@ namespace MoonSharp.Interpreter.Interop.BasicDescriptors
 	/// </summary>
 	public interface IMemberDescriptor
 	{
-		/// <summary>
-		/// Gets a value indicating whether the described member is static.
-		/// </summary>
-		bool IsStatic { get; }
+        /// <summary>
+        /// Gets a value indicating whether the described member is static.
+        /// </summary>
+        bool IsStatic { get; }
 		/// <summary>
 		/// Gets the name of the member
 		/// </summary>
