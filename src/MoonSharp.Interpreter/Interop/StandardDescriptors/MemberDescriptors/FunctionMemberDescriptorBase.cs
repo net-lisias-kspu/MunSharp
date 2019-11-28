@@ -277,15 +277,15 @@ namespace MoonSharp.Interpreter.Interop
 			get { return MemberDescriptorAccess.CanRead | MemberDescriptorAccess.CanExecute; }
 		}
 
-		/// <summary>
-		/// Gets the value of this member as a <see cref="DynValue" /> to be exposed to scripts.
-		/// </summary>
-		/// <param name="script">The script.</param>
-		/// <param name="obj">The object owning this member, or null if static.</param>
-		/// <returns>
-		/// The value of this member as a <see cref="DynValue" />.
-		/// </returns>
-		public virtual DynValue GetValue(Script script, object obj)
+        /// <summary>
+        /// Gets the value of this member as a <see cref="DynValue" /> to be exposed to scripts.
+        /// </summary>
+        /// <param name="script">The script.</param>
+        /// <param name="obj">The object owning this member, or null if static.</param>
+        /// <returns>
+        /// The value of this member as a <see cref="DynValue" />.
+        /// </returns>
+        public virtual DynValue GetValue(Script script, object obj)
 		{
 			this.CheckAccess(MemberDescriptorAccess.CanRead, obj);
 			return this.GetCallbackAsDynValue(script, obj);

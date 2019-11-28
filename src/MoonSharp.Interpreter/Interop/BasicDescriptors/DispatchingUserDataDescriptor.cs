@@ -171,14 +171,25 @@ namespace MoonSharp.Interpreter.Interop.BasicDescriptors
 			m_MetaMembers.Remove(memberName);
 		}
 
-        public void GetReflectedType(IMemberDescriptor descriptor)
+        Type GetDeclaringType(IMemberDescriptor desc)
         {
-
+            switch (desc)
+            {
+                case FieldMemberDescriptor field:
+                    return field.FieldInfo.DeclaringType;
+                case PropertyMemberDescriptor property:
+                    return property.PropertyInfo.DeclaringType;
+                case MethodMemberDescriptor method:
+                    return method.MethodInfo.DeclaringType;
+                case EventMemberDescriptor eventMember:
+                    return eventMember.EventInfo.DeclaringType;
+            }
+            return null;
         }
 
         private void AddMemberTo(Dictionary<string, IMemberDescriptor> members, string name, IMemberDescriptor desc)
 		{
-			IOverloadableMemberDescriptor odesc = desc as IOverloadableMemberDescriptor;
+            IOverloadableMemberDescriptor odesc = desc as IOverloadableMemberDescriptor;
 
 			if (odesc != null)
 			{
@@ -189,7 +200,17 @@ namespace MoonSharp.Interpreter.Interop.BasicDescriptors
 					if (overloads != null)
 						overloads.AddOverload(odesc);
 					else
-						throw new ArgumentException(string.Format("Multiple members named {0} are being added to type {1} and one or more of these members do not support overloads.", name, this.Type.FullName));
+                    {
+                        var oldDesc = members[name];
+                        Type newDeclaringType = GetDeclaringType(desc);
+                        Type oldDeclaringType = GetDeclaringType(oldDesc);
+                        if (newDeclaringType.IsSubclassOf(oldDeclaringType))
+                        {
+                            // Just shadow the older version
+                            members[name] = new OverloadedMethodMemberDescriptor(name, this.Type, odesc);
+                        }
+                    }
+                    //throw new ArgumentException(string.Format("Multiple members named {0} are being added to type {1} and one or more of these members do not support overloads.", name, this.Type.FullName));
 				}
 				else
 				{
@@ -200,7 +221,15 @@ namespace MoonSharp.Interpreter.Interop.BasicDescriptors
 			{
 				if (members.ContainsKey(name))
 				{
-					throw new ArgumentException(string.Format("Multiple members named {0} are being added to type {1} and one or more of these members do not support overloads.", name, this.Type.FullName));
+                    var oldDesc = members[name];
+                    Type newDeclaringType = GetDeclaringType(desc);
+                    Type oldDeclaringType = GetDeclaringType(oldDesc);
+                    if (newDeclaringType.IsSubclassOf(oldDeclaringType))
+                    {
+                        members[name] = desc;
+                    }
+
+                    //throw new ArgumentException(string.Format("Multiple members named {0} are being added to type {1} and one or more of these members do not support overloads.", name, this.Type.FullName));
 				}
 				else
 				{

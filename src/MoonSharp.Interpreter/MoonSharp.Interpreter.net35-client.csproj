@@ -48,9 +48,9 @@
     </NoWarn>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>ExtendedDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Release\KerbaluaMoonSharp.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\MunSharp.xml</DocumentationFile>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <AssemblyName>KerbaluaMoonSharp</AssemblyName>
+    <AssemblyName>MunSharp</AssemblyName>
     <WarningsNotAsErrors></WarningsNotAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
