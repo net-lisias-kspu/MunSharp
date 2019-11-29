@@ -3,3 +3,5 @@ This is a version of [MoonSharp](https://github.com/moonsharp-devs/moonsharp) th
 With the following changes:
 1. Renamed the AssemblyName to `MunSharp` in order to avoid conflicts with other KSP mods' use of MoonSharp.
 2. Modified the auto-registration of classes to not throw an error when one member name hides another without overriding it. Instead it chooses which member to include based on which member's declaring type is the subclass.
+
+I'd recommend against cloning this at this moment as there are some issues with git and the gitignore.
