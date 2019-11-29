@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MoonSharp.Interpreter")]
-[assembly: AssemblyDescription("An interpreter for the Lua language")]
+[assembly: AssemblyTitle("MunSharp")]
+[assembly: AssemblyDescription("Modified version of the MoonSharp Interpreter for our KSP mod RedOnion")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("http://www.moonsharp.org")]
-[assembly: AssemblyProduct("MoonSharp.Interpreter")]
-[assembly: AssemblyCopyright("Copyright © 2014-2015, Marco Mastropaolo")]
+[assembly: AssemblyCompany("https://github.com/evandisoft/MunSharp")]
+[assembly: AssemblyProduct("MunSharp")]
+[assembly: AssemblyCopyright("MunSharp is Copyright Evan Dickinson and Lukas Fires, MoonSharp is Copyright © 2014-2015, Marco Mastropaolo")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

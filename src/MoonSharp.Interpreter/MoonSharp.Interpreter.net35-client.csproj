@@ -51,7 +51,8 @@
     <DocumentationFile>bin\Release\MunSharp.xml</DocumentationFile>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <AssemblyName>MunSharp</AssemblyName>
-    <WarningsNotAsErrors></WarningsNotAsErrors>
+    <WarningsNotAsErrors>
+    </WarningsNotAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
