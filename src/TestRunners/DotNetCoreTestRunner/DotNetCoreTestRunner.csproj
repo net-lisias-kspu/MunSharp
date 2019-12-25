@@ -13,6 +13,19 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug.MacOS|AnyCPU' ">
+    <IntermediateOutputPath>obj\Debug\netcoreapp1.0</IntermediateOutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DefineConstants>TRACE;DOTNET_CORE;EMBEDTEST;DEBUG;NETCOREAPP;NETCOREAPP1_0</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release.MacOS|AnyCPU' ">
+    <IntermediateOutputPath>obj\Release\netcoreapp1.0</IntermediateOutputPath>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;DOTNET_CORE;EMBEDTEST;RELEASE;NETCOREAPP;NETCOREAPP1_0</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MoonSharp.Interpreter\_Projects\MoonSharp.Interpreter.netcore\MoonSharp.Interpreter.netcore.csproj" />
     <ProjectReference Include="..\..\MoonSharp.VsCodeDebugger\_Projects\MoonSharp.VsCodeDebugger.netcore\MoonSharp.VsCodeDebugger.netcore.csproj" />

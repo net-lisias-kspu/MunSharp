@@ -16,4 +16,20 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug.MacOS|AnyCPU' ">
+    <IntermediateOutputPath>obj\Debug\netstandard1.6</IntermediateOutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DefineConstants>TRACE;DOTNET_CORE;NETFX_CORE;DEBUG;NETSTANDARD;NETSTANDARD1_6</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release.MacOS|AnyCPU' ">
+    <IntermediateOutputPath>obj\Release\netstandard1.6</IntermediateOutputPath>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;DOTNET_CORE;NETFX_CORE;RELEASE;NETSTANDARD;NETSTANDARD1_6</DefineConstants>
+    <ExternalConsole>false</ExternalConsole>
+    <NoStdLib></NoStdLib>
+    <NoStdLib>true</NoStdLib>
+  </PropertyGroup>
 </Project>
